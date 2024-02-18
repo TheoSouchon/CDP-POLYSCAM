@@ -1,0 +1,32 @@
+stages:
+  - test
+  - build
+
+front-test:
+  stage: test
+  image: cypress/browsers:node-20.9.0-chrome-118.0.5993.88-1-ff-118.0.2-edge-118.0.2088.46-1
+  allow_failure: true
+  before_script:
+    - npm ci --prefer-offline --no-audit
+  script:
+    - npm start &
+    - npx cypress run --browser firefox
+  cache:
+    paths:
+      - node_modules/
+      - .npm/
+  when: manual
+
+front-build:
+  stage: build
+  image: docker:24.0.6
+  allow_failure: true
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u @222111482t -p glpat-tzfKXvB_4UTKcSdSPVcd $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE/polyscam-front:$CI_COMMIT_REF_SLUG" -t "$CI_REGISTRY_IMAGE/polyscam-front:$CI_COMMIT_SHORT_SHA" -f Dockerfile .
+    - docker push "$CI_REGISTRY_IMAGE/polyscam-front:$CI_COMMIT_SHORT_SHA"
+    - docker push "$CI_REGISTRY_IMAGE/polyscam-front:$CI_COMMIT_REF_SLUG"
+  when: manual

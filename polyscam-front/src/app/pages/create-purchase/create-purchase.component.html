@@ -1,0 +1,15 @@
+<form [formGroup]="purchaseForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Coût</mat-label>
+    <input matInput type="number" formControlName="cost"
+           [min]="1" [max]="selectedAnnounce?.price || Infinity">
+    <mat-error *ngIf="purchaseForm.get('cost')?.errors?.['min']">
+      Le coût doit être d'au moins 1€.
+    </mat-error>
+    <mat-error *ngIf="purchaseForm.get('cost')?.errors?.['max']">
+      Le coût ne doit pas dépasser {{ selectedAnnounce?.price }}€.
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-stroked-button type="submit" [disabled]="!purchaseForm.valid">Créer la commande</button>
+</form>

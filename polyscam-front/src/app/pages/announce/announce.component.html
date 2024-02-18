@@ -1,0 +1,10 @@
+<div *ngIf="noConnectedPersonAnnounces && noConnectedPersonAnnounces.length > 0">
+  <h2>Liste des annonces</h2>
+  <app-announce-card *ngFor="let announce of noConnectedPersonAnnounces | slice: (page-1) * pageSize : page * pageSize"  [announce]="announce" [showActions]="true"></app-announce-card>
+  <mat-paginator [length]="noConnectedPersonAnnounces.length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" (page)="changePage($event)">
+  </mat-paginator>
+</div>
+
+<div *ngIf="!noConnectedPersonAnnounces || noConnectedPersonAnnounces.length === 0">
+  <p>Aucune annonce à afficher pour le moment.</p>
+</div>

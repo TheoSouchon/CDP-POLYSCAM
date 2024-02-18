@@ -1,0 +1,21 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+#content {
+  padding: 20px;
+}
+
+.logout-button {
+  color: white;
+  background-color: red;
+}
+
+.logout-button:hover {
+  background-color: darkred;
+}

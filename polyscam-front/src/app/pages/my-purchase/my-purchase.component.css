@@ -1,0 +1,34 @@
+mat-table {
+  width: 100%;
+}
+
+mat-header-cell, mat-cell {
+  padding: 8px;
+}
+
+mat-icon {
+  margin-right: 8px;
+}
+
+.mat-icon-check {
+  color: green;
+}
+
+.mat-icon-hourglass {
+  color: lightskyblue;
+}
+
+input[type="number"] {
+  margin-right: 8px;
+  width: 80px;
+}
+
+button {
+  margin-left: 8px;
+}
+.valid-purchase {
+  background-color: lightgreen;
+}
+.sold-purchase {
+  background-color: lightcoral;
+}

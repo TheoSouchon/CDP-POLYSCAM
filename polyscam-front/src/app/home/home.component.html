@@ -1,0 +1,23 @@
+<div *ngIf="info.token && info.token != '{}'; else loggedOut">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Bienvenue, {{ connectedPerson?.firstname }} {{connectedPerson?.lastname}}</mat-card-title>
+      <mat-card-subtitle>Mail: {{ connectedPerson?.email}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Vous êtes actuellement connecté(e) à Polyscam.</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #loggedOut>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Polyscam</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Connectez-vous !</p>
+      <p>Polyscam est un site de création d'annonce pour vendre et commander tout et n'importe quoi.</p>
+    </mat-card-content>
+  </mat-card>
+</ng-template>

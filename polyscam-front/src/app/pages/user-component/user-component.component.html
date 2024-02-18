@@ -1,0 +1,26 @@
+<div class="container">
+<div class="create-announce-container">
+  <button mat-raised-button color="primary" routerLink="/create-announce">Créer une Annonce</button>
+</div>
+
+<div class="edit-profil-container">
+  <button mat-raised-button color="primary" routerLink="/edit-profil">Modifier informations profil</button>
+</div>
+</div>
+
+<div *ngIf="connectedPersonAnnounces && connectedPersonAnnounces.length > 0">
+
+  <h3>Annonces de {{ connectedPerson?.firstname }} :</h3>
+  <div class="announces-container">
+    <app-announce-card *ngFor="let announce of connectedPersonAnnounces | slice: (page-1) * pageSize : page * pageSize" [announce]="announce" [isLinkedToPurchase]="isAnnounceLinkedToPurchase(announce.id)"></app-announce-card>
+  </div>
+  <mat-paginator [length]="connectedPersonAnnounces.length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" (page)="changePage($event)">
+  </mat-paginator>
+</div>
+
+<div *ngIf="!(connectedPersonAnnounces && connectedPersonAnnounces.length > 0)">
+  <p>Aucune annonce postée.</p>
+</div>
+
+
+

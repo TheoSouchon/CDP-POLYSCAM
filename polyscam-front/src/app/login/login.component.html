@@ -1,0 +1,37 @@
+<div class="login-container">
+  <div *ngIf="isLoggedIn; else loggedOut" class="login-info">
+    Logged in as {{ roles }}.
+  </div>
+
+  <ng-template #loggedOut>
+    <div class="login-form-container">
+      <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <mat-form-field appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input matInput type="text" name="username" [(ngModel)]="form.username" #username="ngModel" required>
+          <mat-error *ngIf="f.submitted && username.invalid">
+            Adresse mail requise
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput type="password" name="password" [(ngModel)]="form.password" #password="ngModel" required minlength="6">
+          <mat-error *ngIf="f.submitted && password.invalid">
+            <span *ngIf="password.errors?.['required']">Mot de passe requis</span>
+            <span *ngIf="password.errors?.['minlength']">Le mot de passe doit faire au minimum 6 caractère</span>
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary">Connection</button>
+        <div *ngIf="f.submitted && isLoginFailed" class="login-error">
+          Echec d'authentification: {{errorMessage}}
+        </div>
+      </form>
+      <hr />
+      <div class="form-group">
+        <a routerLink="/signup">S'inscrire</a>
+      </div>
+    </div>
+  </ng-template>
+</div>

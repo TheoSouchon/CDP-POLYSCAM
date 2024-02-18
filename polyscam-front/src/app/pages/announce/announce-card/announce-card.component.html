@@ -1,0 +1,21 @@
+<mat-card class="announce-card" *ngIf="announce">
+  <mat-card-header>
+    <div>
+      <mat-card-title>{{ announce.name }}</mat-card-title>
+      <mat-card-subtitle>{{ announce.price }}€</mat-card-subtitle>
+    </div>
+    <button mat-button *ngIf="!showActions" (click)="openDeleteConfirmDialog()" class="delete-button">Supprimer l'annonce</button>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ announce.description }}</p>
+  </mat-card-content>
+  <mat-card-actions *ngIf="showActions">
+    <button (click)="onSelectAnnounce(announce)">Commander</button>
+  </mat-card-actions>
+  <mat-card-footer class="mat-card-footer">
+    <button mat-raised-button color="accent" *ngIf="isLinkedToPurchase" (click)="viewPurchases(announce.id)">Voir Achats</button>
+    <button mat-button *ngIf="!showActions" (click)="editAnnounce(announce)" style="margin-left: auto;" >Modifier</button>
+    <p *ngIf="showActions" > Créé par : {{ announce.person?.lastname }} {{ announce.person?.firstname }}</p>
+  </mat-card-footer>
+</mat-card>
+

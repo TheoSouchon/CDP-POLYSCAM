@@ -1,0 +1,52 @@
+<div *ngIf="isSignedUp; else signupForm">
+  <div class="register-info">
+    Your registration is successful. Please login!
+  </div>
+</div>
+
+<ng-template #signupForm>
+  <div class="register-container">
+    <div class="register-form-container">
+    <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <mat-form-field appearance="fill">
+        <mat-label>Prénom</mat-label>
+        <input matInput type="text" name="firstname" [(ngModel)]="form.firstname" #firstname="ngModel" required>
+        <mat-error *ngIf="f.submitted && firstname.invalid">
+          Prénom est requis
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Nom de famille</mat-label>
+        <input matInput type="text" name="lastname" [(ngModel)]="form.lastname" #lastname="ngModel" required>
+        <mat-error *ngIf="f.submitted && lastname.invalid">
+          Nom de famille est requis
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" name="email" [(ngModel)]="form.email" #email="ngModel" required>
+        <mat-error *ngIf="f.submitted && email.invalid">
+          Email est requis
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" name="password" [(ngModel)]="form.password" #password="ngModel" required minlength="6">
+        <mat-error *ngIf="f.submitted && password.invalid">
+          <span *ngIf="password.errors?.['required']">Mot de passe est requis</span>
+          <span *ngIf="password.errors?.['minlength']">Le mot de passe doit comporter au moins 6 caractères</span>
+        </mat-error>
+      </mat-form-field>
+
+
+      <button mat-raised-button color="primary">S'inscrire</button>
+      <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+        Échec de l'inscription!<br/>{{errorMessage}}
+      </div>
+    </form>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,73 @@
+.edit-profile-container {
+  max-width: 600px; /* Augmentez la largeur du conteneur */
+  margin: 0 auto;
+  padding: 40px; /* Augmentez l'espacement intérieur */
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style des champs de formulaire */
+mat-form-field {
+  width: 100%; /* Pleine largeur */
+  margin-bottom: 24px; /* Augmentez l'espacement entre les champs */
+}
+
+/* Style des étiquettes (labels) */
+mat-form-field mat-label {
+  color: #333;
+  font-size: 18px; /* Augmentez la taille de police */
+}
+
+/* Style des champs d'entrée */
+input.mat-input, textarea.mat-input {
+  padding: 12px; /* Augmentez le rembourrage */
+  border-radius: 8px; /* Augmentez le rayon de bordure */
+  border: 2px solid #ddd; /* Augmentez l'épaisseur de la bordure */
+  font-size: 16px; /* Augmentez la taille de police */
+}
+
+/* Style du bouton de soumission */
+button[type="submit"] {
+  width: 100%;
+  padding: 14px 20px; /* Augmentez le rembourrage */
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  font-size: 18px; /* Augmentez la taille de police */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Style pour les messages d'erreur */
+.error-message {
+  color: #ff0000;
+  font-size: 16px; /* Augmentez la taille de police */
+}
+
+/* Espacement entre les champs */
+.mat-form-field + .mat-form-field {
+  margin-top: 24px; /* Augmentez l'espacement entre les champs */
+}
+
+/* Style pour les boutons */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons button {
+  flex: 1;
+  padding: 35px 20px;
+  margin-right: 10px;
+  font-size: 18px; /* Augmentez la taille de police */
+}
+
+.delete-button:hover {
+  background-color: #c82333; /* Couleur de fond rouge plus foncé au survol */
+}

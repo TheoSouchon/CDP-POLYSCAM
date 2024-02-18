@@ -1,0 +1,18 @@
+<form [formGroup]="announceForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Prix</mat-label>
+    <input matInput formControlName="price">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+
+  <button mat-stroked-button type="submit" [disabled]="!announceForm.valid">Enregistrer</button>
+</form>

@@ -1,0 +1,63 @@
+<div *ngIf="connectedPersonPurchases && connectedPersonPurchases.length > 0">
+  <h2>Mes Commandes</h2>
+  <mat-table [dataSource]="connectedPersonPurchases | slice: (page-1) * pageSize : page * pageSize" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="announceName">
+      <mat-header-cell *matHeaderCellDef>Nom de l'annonce</mat-header-cell>
+      <mat-cell *matCellDef="let purchase">{{ purchase.announce?.name }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef>Prix proposé</mat-header-cell>
+      <mat-cell *matCellDef="let purchase">{{ purchase.cost }} €</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dateOrder">
+      <mat-header-cell *matHeaderCellDef>Date de la commande</mat-header-cell>
+      <mat-cell *matCellDef="let purchase">{{ purchase.dateOrder | date }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="state">
+      <mat-header-cell *matHeaderCellDef>État de la commande</mat-header-cell>
+      <mat-cell *matCellDef="let purchase">{{ purchase.state }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let purchase">
+        <mat-icon *ngIf="purchase.state === 'Accepté'" class="mat-icon-check">check_circle</mat-icon>
+        <mat-icon *ngIf="purchase.state === 'Refusé'" color="warn">cancel</mat-icon>
+        <mat-icon *ngIf="purchase.state === 'En attente'" class="mat-icon-hourglass">hourglass_empty</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="updateCost">
+      <mat-header-cell *matHeaderCellDef> Nouveau Coût </mat-header-cell>
+      <mat-cell *matCellDef="let purchase">
+        <mat-form-field *ngIf="purchase.state !== 'Accepté' && purchase.state !== 'Vendu'">
+          <input matInput type="number" [(ngModel)]="purchase.newCost"
+                 [min]="1" [max]="purchase.announce?.price"
+                 placeholder="Nouveau coût">
+        </mat-form-field>
+        <button mat-raised-button color="primary"
+                *ngIf="purchase.state !== 'Accepté' && purchase.state !== 'Vendu'"
+                (click)="updateCost(purchase, purchase.newCost)"
+                [disabled]="purchase.newCost < 1 || purchase.newCost > purchase.announce?.price">
+          Soumettre
+        </button>
+      </mat-cell>
+    </ng-container>
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"
+             [ngClass]="{'valid-purchase': row.state === 'Accepté', 'sold-purchase': row.state === 'Vendu'}"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="connectedPersonPurchases.length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" (page)="changePage($event)">
+  </mat-paginator>
+</div>
+
+<div *ngIf="!connectedPersonPurchases || connectedPersonPurchases.length === 0">
+  <p>Aucune commande à afficher pour le moment.</p>
+</div>

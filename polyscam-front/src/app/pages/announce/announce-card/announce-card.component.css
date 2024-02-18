@@ -1,0 +1,72 @@
+.announce-card {
+  margin: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 10px; /* Bordures arrondies */
+}
+
+.announce-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+}
+
+.mat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px;
+}
+
+
+.mat-card-title, .mat-card-subtitle {
+  color: #333; /* Couleur du texte pour le titre et le sous-titre */
+}
+
+.mat-card-content {
+  padding: 10px;
+  color: #555; /* Couleur du texte pour le contenu */
+}
+
+.mat-card-actions {
+  padding: 10px;
+  background-color: #f0f0f0; /* Couleur de fond pour les actions */
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.mat-card-footer {
+  padding: 10px;
+  background-color: #f8f8f8; /* Couleur de fond pour le pied de page */
+  font-size: 0.85em;
+  color: #666; /* Couleur du texte pour le pied de page */
+  border-radius: 10px;
+  display: flex; /* Utilisation de Flexbox */
+  align-items: flex-end; /* Alignement vertical en bas */
+  justify-content: space-between;
+}
+
+button {
+  background-color: #007bff; /* Couleur de fond pour le bouton */
+  color: white;
+  padding: 8px 15px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3; /* Couleur de fond pour le bouton au survol */
+}
+
+.delete-button {
+  margin-left: auto;
+  background-color: #dc3545; /* Couleur de fond rouge */
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c82333; /* Couleur de fond rouge plus foncé au survol */
+}

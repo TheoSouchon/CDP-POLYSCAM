@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <span>Polyscam</span>
+  <span class="toolbar-spacer"></span>
+  <button mat-button routerLink="/home">Accueil</button>
+  <button mat-button *ngIf="authority === 'user'" routerLink="/user">Profil</button>
+  <button mat-button *ngIf="authority === 'user'" routerLink="/announces">Annonces</button>
+  <button mat-button *ngIf="authority === 'user'" routerLink="/my-purchase">Mes commandes</button>
+  <button mat-button *ngIf="authority === 'admin'" routerLink="/admin">Page admin</button>
+  <button mat-button *ngIf="!authority" routerLink="/auth/login">Se connecter</button>
+  <button mat-button *ngIf="authority" (click)="logout()" class="logout-button">Se deconnecter</button>
+</mat-toolbar>
+
+<div id="content">
+  <router-outlet></router-outlet>
+</div>

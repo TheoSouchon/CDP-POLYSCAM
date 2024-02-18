@@ -1,0 +1,26 @@
+<div *ngIf="personList && personList.length > 0">
+  <h2>Liste des personnes</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let person of personList">
+      <td>{{ person.id }}</td>
+      <td>{{ person.firstname }}</td>
+      <td>{{ person.lastname }}</td>
+      <td>{{ person.email }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="!personList || personList.length === 0">
+  <p>Aucune personne à afficher pour le moment.</p>
+</div>
+

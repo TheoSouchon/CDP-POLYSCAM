@@ -1,0 +1,11 @@
+version: "1.0.0"
+services:
+  gitlab-runner:
+    image: gitlab/gitlab-runner:alpine3.17-bleeding
+    container_name: runner-front
+    volumes:
+      - runner_conf:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  runner_conf:

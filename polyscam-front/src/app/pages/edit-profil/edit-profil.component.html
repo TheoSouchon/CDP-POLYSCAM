@@ -1,0 +1,63 @@
+<div class="edit-profile-container">
+  <h2>Vos informations personnelles</h2>
+
+  <form [formGroup]="profileForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput type="text" formControlName="firstname" />
+      <mat-error
+        *ngIf="
+          profileForm.get('firstname')?.invalid &&
+          profileForm.get('firstname')?.touched
+        "
+      >
+        Le nom est requis
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Prénom</mat-label>
+      <input matInput type="text" formControlName="lastname" />
+      <mat-error
+        *ngIf="
+          profileForm.get('lastname')?.invalid &&
+          profileForm.get('lastname')?.touched
+        "
+      >
+        Le prénom est requis
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Adresse mail</mat-label>
+      <input matInput type="email" formControlName="email" />
+      <mat-error
+        *ngIf="
+          profileForm.get('email')?.invalid && profileForm.get('email')?.touched
+        "
+      >
+        Veuillez saisir une adresse e-mail valide
+      </mat-error>
+    </mat-form-field>
+
+    <div class="buttons">
+      <button mat-stroked-button type="submit" routerLink="/user">
+        Retour
+      </button>
+      <button mat-stroked-button type="submit" (click)="saveInformation()">
+        Enregistrer les informations
+      </button>
+    </div>
+    <br />
+    <div class="buttons">
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="deleteAccount()"
+        class="delete-button"
+      >
+        Supprimer mon compte
+      </button>
+    </div>
+  </form>
+</div>

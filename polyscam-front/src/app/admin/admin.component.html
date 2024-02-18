@@ -1,0 +1,24 @@
+<div class="page-header">
+  <div class="admin-page">
+    <div class="container">
+      <h1 class ="admin-title">Admin Page</h1>
+      <nav class="navbar navbar-inverse">
+        <div class="navLinks">
+          <ul class="nav navbar-nav" routerLinkActive="active">
+            <a [routerLink]="['/persons']">Personnes</a>
+            <br/>
+            <a [routerLink]="['/announces']">Annonces</a>
+            <br/>
+            <a [routerLink]="['/purchases']">Commandes</a>
+
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+<div id="content">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+.create-announce-container {
+  margin-bottom: 20px;
+}
+
+.announces-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
